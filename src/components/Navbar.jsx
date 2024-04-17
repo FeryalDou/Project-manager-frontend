@@ -2,11 +2,10 @@
 
 function Navbar() {
   return (
-    <nav className="bg-yellow-600">
-      <div className="container mx-auto flex justify-between items-center justify-end">
-        <div className="flex items-center">
-          <img src="./assets/logo.png" alt="Logo" className="h-16 w-auto" />
-        </div>
+    <nav className="bg-blue text-center">
+      <div className="container mx-auto flex justify-between items-center px-5 py-3">
+        {/* Contenu de la navbar */}
+        <h1>prime project</h1>
       </div>
     </nav>
   );
