@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const projectManagerApi = axios.create({
-  baseURL: import.meta.env.MONGODB_URI,
+  baseURL: import.meta.env.VITE_BACKEND_URL,
 });
 
 projectManagerApi.interceptors.request.use((request) => {
