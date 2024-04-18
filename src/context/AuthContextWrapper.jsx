@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import projectManagerApi from "./service/myApi";
+import projectManagerApi from "../service/myApi";
 
 export const AuthContext = createContext();
 

@@ -1,7 +1,7 @@
 import useAuth from "../context/useAuth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import projectManagerApi from "../context/service/myApi";
+import projectManagerApi from "../service/myApi";
 
 function SignupPage() {
   const { user } = useAuth();

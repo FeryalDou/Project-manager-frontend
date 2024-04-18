@@ -1,12 +1,38 @@
-// Navbar.js
+import { Link } from "react-router-dom";
+import useAuth from "./../context/useAuth";
 
 function Navbar() {
+  const { isLoggedIn, logout } = useAuth();
+
   return (
-    <nav className="bg-blue text-center">
+    <nav className="bg-blue-200">
       <div className="container mx-auto flex justify-between items-center px-5 py-3">
-        {/* Contenu de la navbar */}
-        <h1>prime project</h1>
+        <h1>Prime Project</h1>
       </div>
+      <ul className="flex">
+        {/* <li className="mx-2">
+          <Link to="/">Dashboard</Link>
+        </li> */}
+        {/* <li className="mx-2">
+          <Link to="/projectPage">Projects</Link>{" "}
+        </li> */}
+        {isLoggedIn ? (
+          <>
+            <li className="mx-2">
+              <button onClick={logout}>Logout</button>
+            </li>
+          </>
+        ) : (
+          <>
+            <li className="mx-2">
+              <Link to="/signup">Signup</Link>
+            </li>
+            <li className="mx-2">
+              <Link to="/login">Login</Link>
+            </li>
+          </>
+        )}
+      </ul>
     </nav>
   );
 }

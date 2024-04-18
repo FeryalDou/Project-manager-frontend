@@ -1,13 +1,13 @@
 //import React from "react";
 import React, { useState } from "react";
-import projectManagerApi from "../context/service/myApi";
+import projectManagerApi from "../service/myApi";
 import { Link } from "react-router-dom";
 import useAuth from "../context/useAuth";
 
 function LoginPage() {
   const [formState, setFormState] = useState({
-    fristName: "",
-    lastName: "",
+    // fristName: "",
+    // lastName: "",
     email: "",
     password: "",
   });
@@ -37,7 +37,7 @@ function LoginPage() {
     }
   }
 
-  const { password, email, lastName, fristName } = formState;
+  const { password, email } = formState;
   return (
     <div>
       <h2>Login form</h2>
@@ -45,7 +45,7 @@ function LoginPage() {
       <p style={{ color: "red" }}>{error}</p>
 
       <form onSubmit={handleSubmit}>
-        <div>
+        {/* <div>
           <label htmlFor="fristName">First Name : </label>
           <input
             type="text"
@@ -64,7 +64,7 @@ function LoginPage() {
             value={lastName}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
 
         <div>
           <label htmlFor="email">Email: </label>
