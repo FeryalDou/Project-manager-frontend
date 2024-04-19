@@ -1,4 +1,3 @@
-//import React from "react";
 import React, { useState } from "react";
 import projectManagerApi from "../service/myApi";
 import { Link } from "react-router-dom";
@@ -6,8 +5,6 @@ import useAuth from "../context/useAuth";
 
 function LoginPage() {
   const [formState, setFormState] = useState({
-    // fristName: "",
-    // lastName: "",
     email: "",
     password: "",
   });
@@ -24,12 +21,10 @@ function LoginPage() {
     e.preventDefault();
     try {
       const response = await projectManagerApi.post("/auth/login", formState);
-      console.log(response);
       const token = response.data.authToken;
       storeToken(token);
       await authenticateUser();
     } catch (error) {
-      console.log(error.message);
       setError(error.response?.data?.message);
       setTimeout(() => {
         setError("");
@@ -37,60 +32,62 @@ function LoginPage() {
     }
   }
 
-  const { password, email } = formState;
   return (
-    <div>
-      <h2>Login form</h2>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-beige-50">
+      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
+        <h2 className="text-2xl font-semibold text-center text-gray-700">
+          Login
+        </h2>
+        {error && <p className="text-center text-red-500">{error}</p>}
 
-      <p style={{ color: "red" }}>{error}</p>
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          <div>
+            <label
+              htmlFor="email"
+              className="text-sm font-medium text-gray-700"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="w-full p-3 mt-1 border rounded-md focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              placeholder="Enter your email"
+              value={formState.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="password"
+              className="text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              className="w-full p-3 mt-1 border rounded-md focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              placeholder="Enter your password"
+              value={formState.password}
+              onChange={handleChange}
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full p-3 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Submit
+          </button>
+        </form>
 
-      <form onSubmit={handleSubmit}>
-        {/* <div>
-          <label htmlFor="fristName">First Name : </label>
-          <input
-            type="text"
-            id="firstName"
-            placeholder="First Name"
-            value={fristName}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="lastName">Last Name: </label>
-          <input
-            type="text"
-            id="lastName"
-            placeholder="Last Name"
-            value={lastName}
-            onChange={handleChange}
-          />
-        </div> */}
-
-        <div>
-          <label htmlFor="email">Email: </label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            value={email}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            id="password"
-            placeholder="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </div>
-        <button>Submit</button>
-        <p>
-          Need an account? <Link to="/signup">Signup</Link>
+        <p className="text-sm text-center text-gray-600">
+          Need an account?{" "}
+          <Link to="/signup" className=" text-indigo-600 hover:text-indigo-500">
+            Signup
+          </Link>
         </p>
-      </form>
+      </div>
     </div>
   );
 }
