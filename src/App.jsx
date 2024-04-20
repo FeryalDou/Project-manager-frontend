@@ -5,6 +5,8 @@ import React, { createContext } from "react";
 import SignupPage from "./pages/SignupPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
+import ProjectDetailsPage from "./pages/ProjectDetailPage.jsx";
+import TaskPage from "./pages/TaskPage.jsx";
 // import DashboardPage from "./pages/DashboardPage.jsx";
 
 /*Re-Routing */
@@ -20,12 +22,15 @@ function App() {
         <Navbar />
         <Sidebar />
         <Routes>
+          <Route path="/" element={<LoginPage />} />{" "}
+          {/* Route pour la page de connexion par défaut */}
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           {/* <Route path="/dashboard" element={<DashboardPage />} /> */}
           <Route path="/projects" element={<ProjectPage />} />
-          {/* <Route path="/projectPage" element={<ProjectCard />} /> */}
-          <Route path="/user/" element={<IsUser />} />
+          <Route path="/projects/:projectId" element={<ProjectDetailsPage />} />
+          <Route path="/tasks" element={<TaskPage />} />
+          <Route path="/user" element={<IsUser />} />
         </Routes>
       </div>
     </>
