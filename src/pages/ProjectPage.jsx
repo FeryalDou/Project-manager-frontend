@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import projectManagerApi from "../service/myApi.js";
-import ProjectCard from "../components/ProjectCard.jsx";
-
+import ProjectCard from "../components/project/ProjectCard.jsx";
+import ProjectForm from "../components/project/ProjectForm.jsx";
 function ProjectPage() {
   const [projects, setProjects] = useState([]);
 
