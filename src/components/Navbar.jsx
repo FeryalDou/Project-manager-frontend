@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useAuth from "./../context/useAuth";
+import logo from "../assets/logo2.png"; // Importez votre logo ici
 
 function Navbar() {
   const { isLoggedIn, logout } = useAuth();
@@ -7,9 +8,11 @@ function Navbar() {
   return (
     <nav className="bg-grey-400 shadow-md">
       <div className="container mx-auto flex justify-between items-center px-5 py-3">
-        <h1 className="text-xl font-bold text-gray-800">Prime Project</h1>
-
-        <ul className="flex">
+        <div className="flex items-center">
+          <img src={logo} alt="Logo" className="w-12 h-12 mr-3" />
+          <h1 className="text-xl font-bold text-gray-800">Prime Project</h1>
+        </div>
+        <ul className="flex items-center">
           {isLoggedIn ? (
             <>
               <li className="mx-2">
