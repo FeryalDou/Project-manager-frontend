@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import projectManagerApi from "../../service/myApi";
 
-function ProjectForm({ project, onSubmit }) {
+function ProjectForm({ project }) {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -42,7 +42,7 @@ function ProjectForm({ project, onSubmit }) {
         startDate: "",
         endDate: "",
       });
-      onSubmit();
+      // onSubmit(formData);
     } catch (error) {
       console.error("Failed to submit project form", error);
     }

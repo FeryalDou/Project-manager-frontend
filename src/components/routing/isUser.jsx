@@ -13,10 +13,6 @@ function IsUser() {
     return <Navigate to={"/login"} />;
   }
 
-  if (user.role !== "user") {
-    return <Navigate to="/" />;
-  }
-
   return <Outlet />;
 }
 

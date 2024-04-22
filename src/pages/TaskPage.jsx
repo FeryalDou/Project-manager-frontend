@@ -21,7 +21,6 @@ function TaskPage() {
   const handleAddTask = async (formData) => {
     try {
       await projectManagerApi.post("/tasks", formData);
-      // Refresh the task list after adding
       const response = await projectManagerApi.get("/tasks");
       setTasks(response.data);
     } catch (error) {
@@ -32,7 +31,6 @@ function TaskPage() {
   const handleUpdateTask = async (taskId, formData) => {
     try {
       await projectManagerApi.put(`/tasks/${taskId}`, formData);
-      // Refresh the task list after updating
       const response = await projectManagerApi.get("/tasks");
       setTasks(response.data);
     } catch (error) {
@@ -43,7 +41,6 @@ function TaskPage() {
   const handleDeleteTask = async (taskId) => {
     try {
       await projectManagerApi.delete(`/tasks/${taskId}`);
-      // Refresh the task list after deletion
       const updatedTasks = tasks.filter((task) => task._id !== taskId);
       setTasks(updatedTasks);
     } catch (error) {

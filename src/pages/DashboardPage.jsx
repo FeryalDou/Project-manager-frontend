@@ -1,15 +1,11 @@
-// import React from "react";
-// import ProjectCard from "../components/ProjectCard";
+import React from "react";
 
-// const Dashboard = ({ projects }) => {
-//   return (
-//     <div>
-//       <h2>Dashboard</h2>
-//       {projects.map((project) => (
-//         <ProjectCard key={project.id} project={project} />
-//       ))}
-//     </div>
-//   );
-// };
+const DashboardPage = () => {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+    </div>
+  );
+};
 
-// export default Dashboard;
+export default DashboardPage;

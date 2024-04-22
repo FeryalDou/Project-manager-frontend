@@ -13,7 +13,7 @@ function Sidebar() {
     <div
       className={`fixed inset-y-0 left-0 ${
         isOpen ? "w-64" : "w-16"
-      } transition-width duration-300 bg-beige-100 shadow-xl z-30`}
+      } transition-width duration-300 bg-beige-400 shadow-xl z-30`}
     >
       <button
         onClick={toggleSidebar}
@@ -52,7 +52,7 @@ function Sidebar() {
                 <Link
                   to="/tasks"
                   className="block py-3 px-5 text-center text-gray-800 hover:text-gray-900 transition duration-300"
-                  onClick={closeSidebar} // Ajoutez onClick pour fermer la barre latérale lors du clic sur un lien
+                  onClick={closeSidebar}
                 >
                   Tasks
                 </Link>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import projectManagerApi from "../service/myApi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../context/useAuth";
 
 function LoginPage() {
@@ -10,7 +10,7 @@ function LoginPage() {
   });
   const [error, setError] = useState("");
   const { storeToken, authenticateUser } = useAuth();
-
+  const navigate = useNavigate();
   function handleChange(e) {
     const key = e.target.id;
     const value = e.target.value;
@@ -24,6 +24,9 @@ function LoginPage() {
       const token = response.data.authToken;
       storeToken(token);
       await authenticateUser();
+      if (response.status === 200) {
+        navigate("/dashboard");
+      }
     } catch (error) {
       setError(error.response?.data?.message);
       setTimeout(() => {
