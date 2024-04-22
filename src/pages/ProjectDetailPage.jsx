@@ -5,6 +5,7 @@ import { format } from "date-fns";
 
 function ProjectDetailsPage() {
   const { projectId } = useParams();
+  console.log("projectId:", projectId);
   const [project, setProject] = useState(null);
 
   useEffect(() => {
@@ -19,45 +20,30 @@ function ProjectDetailsPage() {
     fetchProjectDetails();
   }, [projectId]);
 
-  if (!project) {
+  if (!projectId) {
     return <div className="text-center mt-8">Loading...</div>;
   }
 
-  const formattedStartDate = project.startDate
-    ? format(new Date(project.startDate), "dd/MM/yyyy")
-    : "";
-  const formattedEndDate = project.endDate
-    ? format(new Date(project.endDate), "dd/MM/yyyy")
-    : "";
-
-  return (
+  return project ? (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{project.name}</h1>
       <p className="text-gray-700 mb-4">{project.description}</p>
-      <div className="flex justify-between">
-        <div>
-          <p className="font-semibold">Start Date:</p>
-          <p>{formattedStartDate}</p>
-        </div>
-        <div>
-          <p className="font-semibold">End Date:</p>
-          <p>{formattedEndDate}</p>
-        </div>
-      </div>
+      <div className="flex justify-between"></div>
       <div>
         <h2 className="text-2xl font-bold my-4">Tasks</h2>
         <ul>
           {project.tasks &&
             project.tasks.map((task) => (
-              <li key={task._id}>
+              <li key={taskId}>
                 <p>{task.title}</p>
                 <p>{task.description}</p>
+                <p>{task.endDate}</p>
               </li>
             ))}
         </ul>
       </div>
     </div>
-  );
+  ) : null;
 }
 
 export default ProjectDetailsPage;

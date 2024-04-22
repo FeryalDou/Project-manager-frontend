@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import SignupPage from "./pages/SignupPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
-import ProjectDetailsPage from "./pages/ProjectDetailPage.jsx";
+import ProjectDetailPage from "./pages/ProjectDetailPage.jsx";
 import TaskPage from "./pages/TaskPage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
 
@@ -28,8 +28,11 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route element={<IsUser />}>
             <Route path="/projects" element={<ProjectPage />} />
-            <Route path="/projects/:_id" element={<ProjectDetailsPage />} />
-            <Route path="/tasks" element={<TaskPage />} />
+            <Route
+              path="/ProjectDetailPage/:projectId"
+              element={<ProjectDetailPage />}
+            />
+            <Route path="/tasks/:taskId" element={<TaskPage />} />
           </Route>
         </Routes>
       </div>

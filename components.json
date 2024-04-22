@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": false,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "index.css",
+    "baseColor": "zinc",
+    "cssVariables": false,
+    "prefix": "yes"
+  },
+  "aliases": {
+    "components": "Calendar",
+    "utils": "@/lib/utils"
+  }
+}

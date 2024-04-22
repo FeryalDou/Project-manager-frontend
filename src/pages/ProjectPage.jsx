@@ -6,14 +6,13 @@ import ProjectCard from "../components/project/ProjectCard.jsx";
 import ProjectForm from "../components/project/ProjectForm.jsx";
 
 function ProjectPage() {
-  const { projectId } = useParams();
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         const response = await projectManagerApi.get("/projects");
-        //console.log("Projects response:", response.data);
+        console.log("Projects response:", response.data);
         setProjects(response.data);
       } catch (error) {
         console.error("Error fetching projects", error);
@@ -22,7 +21,9 @@ function ProjectPage() {
     fetchProjects();
   }, []);
   //console.log("Projects state:", projects);
-
+  if (!projects) {
+    return <p>Loading</p>;
+  }
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Projects</h1>
