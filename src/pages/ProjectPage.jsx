@@ -20,22 +20,25 @@ function ProjectPage() {
     };
     fetchProjects();
   }, []);
-  //console.log("Projects state:", projects);
+
   if (!projects) {
     return <p>Loading</p>;
   }
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Projects</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project) => (
-          <Link to={`/ProjectDetailPage/${project._id}`} key={project._id}>
-            <ProjectCard project={project} />
-          </Link>
-        ))}
-      </div>
-      <div className="mt-8">
-        <ProjectForm />
+    <div className="flex flex-col items-center justify-center h-full">
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold mb-4">Projects</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <Link to={`/ProjectDetailPage/${project._id}`} key={project._id}>
+              <ProjectCard project={project} />
+            </Link>
+          ))}
+        </div>
+        <div className="mt-8 flex-row m-10 p-10">
+          <ProjectForm />
+        </div>
       </div>
     </div>
   );

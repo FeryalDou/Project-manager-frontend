@@ -10,32 +10,39 @@ const DashboardPage = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        // user tasks
+        // Récupération des tâches de l'utilisateur
         const tasksResponse = await projectManagerApi.get("/tasks");
         setTasks(tasksResponse.data);
 
-        // user project
+        // Récupération des projets de l'utilisateur
         const projectsResponse = await projectManagerApi.get("/projects");
         setProjects(projectsResponse.data);
       } catch (error) {
-        console.error("Error fetching user data", error);
+        console.error(
+          "Erreur lors de la récupération des données de l'utilisateur",
+          error
+        );
       }
     };
     fetchUserData();
   }, []);
 
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div className="flex flex-col items-center justify-center h-full">
+      <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
       <div>
-        <h2>Tasks</h2>
-        <TaskList tasks={tasks} />
-      </div>
-      <div>
-        <h2>Projects</h2>
-        {projects.map((project) => (
-          <ProjectCard key={project._id} project={project} />
-        ))}
+        <h2 className="text-xl font-semibold mb-2">Projets</h2>
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {projects.map((project) => (
+            <ProjectCard key={project._id} project={project} />
+          ))}
+        </div>
+        <div className="w-full max-w-screen-lg">
+          <div className="mb-8">
+            <h2 className="text-xl font-semibold mb-2">Tâches</h2>
+            <TaskList tasks={tasks} />
+          </div>
+        </div>
       </div>
     </div>
   );
