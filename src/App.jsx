@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-//import React, { createContext } from "react";
+import React, { createContext } from "react";
 
 /* Pages */
 import SignupPage from "./pages/SignupPage.jsx";
@@ -32,7 +32,7 @@ function App() {
               path="/ProjectDetailPage/:projectId"
               element={<ProjectDetailPage />}
             />
-            <Route path="/tasks/:taskId" element={<TaskPage />} />
+            <Route path="/tasks" element={<TaskPage />} />
           </Route>
         </Routes>
       </div>
