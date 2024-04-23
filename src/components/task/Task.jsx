@@ -10,7 +10,6 @@ const Task = ({ task }) => {
       <h2 className="text-lg font-semibold">{task.title}</h2>
       <p className="text-gray-600">{task.description}</p>
       <p className="text-gray-600">{task.status}</p>
-      {/* <p className="text-gray-600">{task.project._id}</p> */}
     </div>
   );
 };

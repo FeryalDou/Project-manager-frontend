@@ -58,7 +58,7 @@ function LoginPage() {
               placeholder="Enter your email"
               value={formState.email}
               onChange={handleChange}
-              autoComplete="email"
+              autoComplete="on"
             />
           </div>
           <div>
