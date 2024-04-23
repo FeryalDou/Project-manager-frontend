@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import projectManagerApi from "../../service/myApi";
 
-function ProjectForm({ project }) {
+function ProjectForm() {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -9,16 +9,16 @@ function ProjectForm({ project }) {
     endDate: "",
   });
 
-  useEffect(() => {
-    if (project) {
-      setFormData({
-        name: project.name || "",
-        description: project.description || "",
-        startDate: project.startDate || "",
-        endDate: project.endDate || "",
-      });
-    }
-  }, [project]);
+  // useEffect(() => {
+  //   if (project) {
+  //     setFormData({
+  //       name: project.name || "",
+  //       description: project.description || "",
+  //       startDate: project.startDate || "",
+  //       endDate: project.endDate || "",
+  //     });
+  //   }
+  // }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,11 +31,8 @@ function ProjectForm({ project }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (project) {
-        await projectManagerApi.put(`/projects/${project.id}`, formData);
-      } else {
-        await projectManagerApi.post("/projects", formData);
-      }
+      await projectManagerApi.post("/projects", formData);
+
       setFormData({
         name: "",
         description: "",

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import projectManagerApi from "../service/myApi.js";
-import { format } from "date-fns";
 
 function ProjectDetailsPage() {
   const { projectId } = useParams();
-  console.log("projectId:", projectId);
+  //console.log("projectId:", projectId);
   const [project, setProject] = useState(null);
 
   useEffect(() => {
@@ -34,7 +33,7 @@ function ProjectDetailsPage() {
         <ul>
           {project.tasks &&
             project.tasks.map((task) => (
-              <li key={taskId}>
+              <li key={task._id}>
                 <p>{task.title}</p>
                 <p>{task.description}</p>
                 <p>{task.endDate}</p>

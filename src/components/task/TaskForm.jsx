@@ -1,9 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TaskStatusIcon from "./TaskStatusIcon";
+import projectManagerApi from "../../service/myApi";
 
-const TaskForm = ({ onSubmit, initialValues }) => {
-  const [formData, setFormData] = useState(initialValues || {});
+function TaskForm({ task }) {
+  const [allProject, setAllProject] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    status: "todo",
+    startDate: "",
+    endDate: "",
+  });
 
+  async function fetchAllProjects() {
+    try {
+      const response = await projectManagerApi.get("/projects");
+      setAllProject(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    fetchAllProjects();
+  }, []);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -12,11 +31,26 @@ const TaskForm = ({ onSubmit, initialValues }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit(formData);
-  };
+    try {
+      await projectManagerApi.post("/tasks", formData);
 
+      setFormData({
+        name: "",
+        description: "",
+        status: "todo",
+        startDate: "",
+        endDate: "",
+      });
+      // onSubmit(formData);
+    } catch (error) {
+      console.error("Failed to submit task form", error);
+    }
+  };
+  // if (!allProject) {
+  //   return <p>loading</p>;
+  // }
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto">
       <div className="mb-4">
@@ -28,9 +62,9 @@ const TaskForm = ({ onSubmit, initialValues }) => {
         </label>
         <input
           type="text"
-          id="title"
-          name="title"
-          value={formData.title || ""}
+          id="name"
+          name="name"
+          value={formData.name || ""}
           onChange={handleChange}
           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
         />
@@ -70,6 +104,60 @@ const TaskForm = ({ onSubmit, initialValues }) => {
         </select>
         <TaskStatusIcon status={formData.status || "todo"} />
       </div>
+      <div>
+        <label
+          htmlFor="project"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Project:
+        </label>
+        <select
+          id="project"
+          name="project"
+          value={formData.project || ""}
+          onChange={handleChange}
+          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+        >
+          {allProject &&
+            allProject.map((project) => (
+              <option key={project.id} value={project.id}>
+                {project.name}
+              </option>
+            ))}
+        </select>
+      </div>
+      <div className="mb-4">
+        <label
+          htmlFor="startDate"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Start Date:
+        </label>
+        <input
+          type="date"
+          id="startDate"
+          name="startDate"
+          value={formData.startDate}
+          onChange={handleChange}
+          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+        />
+      </div>
+      <div className="mb-6">
+        <label
+          htmlFor="endDate"
+          className="block text-sm font-medium text-gray-700"
+        >
+          End Date:
+        </label>
+        <input
+          type="date"
+          id="endDate"
+          name="endDate"
+          value={formData.endDate}
+          onChange={handleChange}
+          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+        />
+      </div>
       <button
         type="submit"
         className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -78,6 +166,6 @@ const TaskForm = ({ onSubmit, initialValues }) => {
       </button>
     </form>
   );
-};
+}
 
 export default TaskForm;
