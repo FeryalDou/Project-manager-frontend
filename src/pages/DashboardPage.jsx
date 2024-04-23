@@ -27,20 +27,27 @@ const DashboardPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-full">
+    <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
       <div>
         <div>{/* <Calendar /> */}</div>
-        <h2 className="text-xl font-semibold mb-2">Projets</h2>
+        <h2 className="text-xl font-semibold mb-2">Projects</h2>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {projects.map((project) => (
-            <ProjectCard key={project._id} project={project} />
+            <div
+              key={project._id}
+              className="border border-gray-300 rounded-lg p-4"
+            >
+              <ProjectCard project={project} />
+            </div>
           ))}
         </div>
-        <div className="w-full max-w-screen-lg">
+        <div className="w-full max-w-screen-lg mt-8">
           <div className="mb-8">
-            <h2 className="text-xl font-semibold mb-2">Tâches</h2>
-            <TaskList tasks={tasks} />
+            <h2 className="text-xl font-semibold mb-2">Tasks</h2>
+            <div className="border border-gray-300 rounded-lg p-4">
+              <TaskList tasks={tasks} />
+            </div>
           </div>
         </div>
       </div>

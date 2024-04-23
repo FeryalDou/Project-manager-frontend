@@ -10,6 +10,7 @@ function TaskForm({ task }) {
     status: "todo",
     startDate: "",
     endDate: "",
+    project: "",
   });
 
   async function fetchAllProjects() {
@@ -20,9 +21,11 @@ function TaskForm({ task }) {
       console.log(error);
     }
   }
+
   useEffect(() => {
     fetchAllProjects();
   }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -35,24 +38,21 @@ function TaskForm({ task }) {
     e.preventDefault();
     try {
       await projectManagerApi.post("/tasks", formData);
-
       setFormData({
         name: "",
         description: "",
         status: "todo",
         startDate: "",
         endDate: "",
+        project: "",
       });
-      // onSubmit(formData);
     } catch (error) {
       console.error("Failed to submit task form", error);
     }
   };
-  // if (!allProject) {
-  //   return <p>loading</p>;
-  // }
+
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">
       <div className="mb-4">
         <label
           htmlFor="title"
