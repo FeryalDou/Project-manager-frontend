@@ -62,8 +62,29 @@ function ProjectDetailsPage() {
 
   return project ? (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">{project.name}</h1>
-      <p className="text-gray-700 mb-4">{project.description}</p>
+      <h1 className="text-3xl font-bold mb-4">
+        {isEditing ? (
+          <input
+            type="text"
+            name="name"
+            value={editedProject.name}
+            onChange={handleChange}
+          />
+        ) : (
+          project.name
+        )}
+      </h1>
+      <p className="text-gray-700 mb-4">
+        {isEditing ? (
+          <textarea
+            name="description"
+            value={editedProject.description}
+            onChange={handleChange}
+          />
+        ) : (
+          project.description
+        )}
+      </p>
       <div className="flex justify-between">
         {isEditing ? (
           <>
