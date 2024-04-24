@@ -7,11 +7,11 @@ function Navbar() {
   const { isLoggedIn, logout } = useAuth();
 
   return (
-    <nav className="bg-gradient-to-r from-green-500 to-white-500 shadow-md">
+    <nav className="bg-gradient-to-r from-green-800 to-white-600 shadow-md">
       <div className="container mx-auto flex justify-between items-center px-5 py-3">
         <div className="flex items-center">
-          {/* <h1 className="text-xl font-bold text-white">Prime Project</h1> */}
-          <img src={logo} alt="Logo" className="w-16 h-18 mr-3" />
+          <h1 className="text-xl font-bold text-gray">Prime Project</h1>
+          {/* <img src={logo} alt="Logo" className="w-16 h-18 mr-3" /> */}
         </div>
         <ul className="flex items-center space-x-4">
           <li>

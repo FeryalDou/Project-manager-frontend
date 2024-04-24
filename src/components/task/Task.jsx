@@ -1,5 +1,5 @@
 import React from "react";
-
+import TaskStatusIcon from "./TaskStatusIcon";
 const Task = ({ task }) => {
   if (!task) {
     return null;
@@ -7,9 +7,13 @@ const Task = ({ task }) => {
 
   return (
     <div className="bg-white shadow-md rounded-lg p-4">
-      <h2 className="text-lg font-semibold">{task.title}</h2>
-      <p className="text-gray-600">{task.description}</p>
-      <p className="text-gray-600">{task.status}</p>
+      <p className="text-sm mt-2 text-gray-600">{task.description}</p>
+      <p className="text-sm mt-2 text-gray-600">
+        {new Intl.DateTimeFormat(undefined, {
+          dateStyle: "long",
+        }).format(new Date(task.startDate))}
+      </p>
+      <TaskStatusIcon status={task.status} />
     </div>
   );
 };

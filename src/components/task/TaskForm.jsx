@@ -8,9 +8,9 @@ function TaskForm({ task }) {
     name: "",
     description: "",
     status: "todo",
+    project: "",
     startDate: "",
     endDate: "",
-    project: "",
   });
 
   async function fetchAllProjects() {
@@ -42,9 +42,9 @@ function TaskForm({ task }) {
         name: "",
         description: "",
         status: "todo",
+        project: "",
         startDate: "",
         endDate: "",
-        project: "",
       });
     } catch (error) {
       console.error("Failed to submit task form", error);
@@ -52,7 +52,10 @@ function TaskForm({ task }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white shadow-md rounded px-8 pt-6 pb-10 mb-2"
+    >
       <div className="mb-4">
         <label
           htmlFor="title"

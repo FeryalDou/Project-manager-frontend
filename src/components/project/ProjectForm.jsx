@@ -9,17 +9,6 @@ function ProjectForm() {
     endDate: "",
   });
 
-  // useEffect(() => {
-  //   if (project) {
-  //     setFormData({
-  //       name: project.name || "",
-  //       description: project.description || "",
-  //       startDate: project.startDate || "",
-  //       endDate: project.endDate || "",
-  //     });
-  //   }
-  // }, []);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -39,7 +28,6 @@ function ProjectForm() {
         startDate: "",
         endDate: "",
       });
-      // onSubmit(formData);
     } catch (error) {
       console.error("Failed to submit project form", error);
     }
