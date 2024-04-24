@@ -14,7 +14,7 @@ const Task = ({ task }) => {
       <p className="text-sm mt-2 text-gray-600">
         {new Intl.DateTimeFormat(undefined, {
           dateStyle: "long",
-        }).format(new Date(task.startDate))}
+        }).format(new Date(task.startDate || "2024/05/13"))}
       </p>
       <TaskStatusIcon status={task.status} />
     </div>
