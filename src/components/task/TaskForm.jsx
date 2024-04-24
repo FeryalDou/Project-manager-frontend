@@ -54,7 +54,7 @@ function TaskForm({ task }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white shadow-md rounded px-8 pt-6 pb-10 mb-2"
+      className="bg-slate-100  shadow-md rounded px-8 pt-6 pb-10 mb-2"
     >
       <div className="mb-4">
         <label
@@ -132,7 +132,7 @@ function TaskForm({ task }) {
       <div className="mb-4">
         <label
           htmlFor="startDate"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-lg font-medium text-gray-700"
         >
           Start Date:
         </label>
@@ -142,28 +142,13 @@ function TaskForm({ task }) {
           name="startDate"
           value={formData.startDate}
           onChange={handleChange}
-          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          className="mt-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
         />
       </div>
-      <div className="mb-6">
-        <label
-          htmlFor="endDate"
-          className="block text-sm font-medium text-gray-700"
-        >
-          End Date:
-        </label>
-        <input
-          type="date"
-          id="endDate"
-          name="endDate"
-          value={formData.endDate}
-          onChange={handleChange}
-          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-        />
-      </div>
+
       <button
         type="submit"
-        className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       >
         Submit
       </button>

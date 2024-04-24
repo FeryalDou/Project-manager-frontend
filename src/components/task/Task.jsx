@@ -7,6 +7,9 @@ const Task = ({ task }) => {
 
   return (
     <div className="bg-white shadow-md rounded-lg p-4">
+      <p className="italic bg-green-50 text-sm mt-2 text-gray-600">
+        {task.name}
+      </p>
       <p className="text-sm mt-2 text-gray-600">{task.description}</p>
       <p className="text-sm mt-2 text-gray-600">
         {new Intl.DateTimeFormat(undefined, {
