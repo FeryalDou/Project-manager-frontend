@@ -71,11 +71,11 @@ function ProjectDetailsPage() {
   };
 
   if (!projectId) {
-    return <div className="text-center mt-8">Loading...</div>;
+    return <div className="bg-white text-center mt-8">Loading...</div>;
   }
 
   return project ? (
-    <div className="container mx-auto px-4 py-8 border border-gray-300 rounded-lg max-w-lg  my-8">
+    <div className="bg-white container mx-auto px-4 py-8 border border-gray-300 rounded-lg max-w-lg  my-8">
       <h1 className=" text-3xl font-bold mb-4">
         {isEditing ? (
           <input
