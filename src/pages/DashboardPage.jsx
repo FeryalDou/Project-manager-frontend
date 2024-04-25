@@ -32,9 +32,9 @@ const DashboardPage = () => {
     <div className="container mx-auto px-6 py-8">
       <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
       <div>
-        <div className="flex flex-row items-center space-x-20 border border-gray-300 rounded-lg p-8">
+        <div className="flex flex-row justify-between items-center border border-gray-300 rounded-lg p-8">
           <CalendarComponent />
-          <img src={logo} alt="Logo" className="w-52 h-38 mr-4" />
+          <img src={logo} alt="Logo" className="w-52 h-48 mr-4" />
           <Clock />
         </div>
         <h2 className="italic text-xl font-semibold mb-2">Projects</h2>
