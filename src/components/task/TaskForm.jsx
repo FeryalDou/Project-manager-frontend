@@ -44,7 +44,6 @@ function TaskForm({ task }) {
         status: "todo",
         project: "",
         startDate: "",
-        endDate: "",
       });
     } catch (error) {
       console.error("Failed to submit task form", error);
