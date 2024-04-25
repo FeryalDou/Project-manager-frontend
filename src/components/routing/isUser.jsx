@@ -6,7 +6,7 @@ function IsUser() {
   const { isLoggedIn, isLoading, user } = useAuth();
 
   if (isLoading) {
-    return <p>Loading :)</p>;
+    return <p>Loading ...</p>;
   }
 
   if (!isLoggedIn) {
