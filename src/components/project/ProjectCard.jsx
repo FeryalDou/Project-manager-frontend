@@ -10,7 +10,6 @@ const ProjectCard = ({ project }) => {
       <h2 className="text-lg font-bold italic">{project.name}</h2>
       <p className="text-sm mt-2">{project.description}</p>
       <p className="text-sm mt-1 ">
-        Start Date:{" "}
         {new Intl.DateTimeFormat(undefined, {
           dateStyle: "long",
         }).format(new Date(project.startDate || "2024/05/13"))}

@@ -1,7 +1,9 @@
+// TaskPage.jsx
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import projectManagerApi from "../service/myApi.js";
 import TaskForm from "../components/task/TaskForm.jsx";
-import TaskList from "../components/task/TaskList.jsx";
+import Task from "../components/task/Task.jsx";
 
 function TaskPage() {
   const [tasks, setTasks] = useState([]);
@@ -28,16 +30,6 @@ function TaskPage() {
     }
   };
 
-  const handleUpdateTask = async (taskId, formData) => {
-    try {
-      await projectManagerApi.put(`/tasks/${taskId}`, formData);
-      const response = await projectManagerApi.get("/tasks");
-      setTasks(response.data);
-    } catch (error) {
-      console.error("Error updating task", error);
-    }
-  };
-
   const handleDeleteTask = async (taskId) => {
     try {
       await projectManagerApi.delete(`/tasks/${taskId}`);
@@ -59,11 +51,13 @@ function TaskPage() {
           {tasks.length === 0 ? (
             <p className="text-gray-600">No tasks available.</p>
           ) : (
-            <TaskList
-              tasks={tasks}
-              onUpdateTask={handleUpdateTask}
-              onDeleteTask={handleDeleteTask}
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {tasks.map((task) => (
+                <Link to={`/TaskDetailPage/${task._id}`} key={task._id}>
+                  <Task task={task} onDeleteTask={handleDeleteTask} />
+                </Link>
+              ))}
+            </div>
           )}
         </div>
       </div>

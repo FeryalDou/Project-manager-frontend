@@ -22,10 +22,12 @@ function ProjectDetailsPage() {
     };
     const fetchTaskAssociated = async () => {
       try {
-        const response = await projectManagerApi.get(`/tasks/${projectId}`);
+        const response = await projectManagerApi.get(
+          `/projects/${projectId}/tasks`
+        );
         setTasks(response.data);
       } catch (error) {
-        console.error("Error fetching project details", error);
+        console.error("Error fetching associated tasks", error);
       }
     };
 

@@ -8,6 +8,7 @@ import ProjectPage from "./pages/ProjectPage.jsx";
 import ProjectDetailPage from "./pages/ProjectDetailPage.jsx";
 import TaskPage from "./pages/TaskPage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
+import TaskDetailsPage from "./pages/TaskDetailPage.jsx";
 
 /*Re-Routing */
 import IsUser from "./components/routing/isUser.jsx";
@@ -30,6 +31,11 @@ function App() {
               path="/ProjectDetailPage/:projectId"
               element={<ProjectDetailPage />}
             />
+            <Route
+              path="/TaskDetailPage/:taskId"
+              element={<TaskDetailsPage />}
+            />
+
             <Route path="/tasks" element={<TaskPage />} />
           </Route>
         </Routes>
