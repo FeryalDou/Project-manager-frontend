@@ -12,9 +12,9 @@ The server is reactivated within seconds upon receiving the first request.
 
 ## Technologies
 
-- **Front-End:** <img src="../frontend/src/assets/logo js.svg"> <img src="../frontend/src/assets/logo react.svg"> <img src="../frontend/src/assets/logo tailwind.svg">
-- **Back-End:** <img src="../frontend/src/assets/logo js.svg"> <img src="../frontend/src/assets/logo nodejs.svg"> <img src="../frontend/src/assets/logo expressjs.svg">
-- **Database:** <img src="../frontend/src/assets/logo expressjs.svg">
+- **Front-End:** ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=flat&logo=javascript&logoColor=%23F7DF1E)  ![React](https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white)
+- **Back-End:** ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=flat&logo=javascript&logoColor=%23F7DF1E) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=flat&logo=node.js&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=flat&logo=express&logoColor=%2361DAFB) 
+- **Database:**![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat&logo=mongodb&logoColor=white) 
 
 ## Features
 
